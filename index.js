@@ -6,7 +6,7 @@ function Avatar() {
   return (
     <img
       className="avatar"
-      src="https://www.hindustantimes.com/ht-img/img/2023/08/10/1600x900/jailer_release_live_updates_1691650467591_1691650467814.jpeg"
+      src="https://static.moviecrow.com/gallery/20221212/209593-FotoJet%20(10).jpg"
       alt="avatar"
     />
   );
@@ -20,22 +20,62 @@ function Intro() {
         Also spelled Rajnikant, original name Shivaji Rao Gaikwad, (born
         December 12, 1950, Bangalore, Mysore [now Bengaluru, Karnataka], India),
         Indian actor whose unique mannerisms and stylized line delivery made him
-        one of the Top leading stars of Tamil cinema. He is know as Super Star
+        one of the Top leading stars of Tamil cinema. He is know as{" "}
+        <b>Super Star</b>
       </p>
     </div>
   );
 }
 
+const skillData = [
+  {
+    skill: "Acting",
+    emoji: "👑",
+    color: "red"
+  },
+  {
+    skill: "Style",
+    emoji: "⚡",
+    color: "skyblue"
+  },
+  {
+    skill: "Never Giveup",
+    emoji: "🐎",
+    color: "green"
+  },
+  {
+    skill: "Sprituality",
+    emoji: "🕉️",
+    color: "yellow"
+  },
+  {
+    skill: "BO King",
+    emoji: "🚀",
+    color: "orange"
+  },
+  {
+    skill: "Super Star",
+    emoji: "💯",
+    color: "pink"
+  },
+  {
+    skill: "Simplicity",
+    emoji: "❤️",
+    color: "violet"
+  }
+];
+
 function SkillList() {
   return (
     <div className="skill-list">
-      <Skill skill="Acting" emoji="👑" color="red" />
-      <Skill skill="Style" emoji="⚡" color="blue" />
-      <Skill skill="Never Giveup" emoji="🐎" color="green" />
-      <Skill skill="Sprituality" emoji="🕉️" color="yellow" />
-      <Skill skill="BO King" emoji="🚀" color="orange" />
-      <Skill skill="Super Star" emoji="💯" color="pink" />
-      <Skill skill="Simplicity" emoji="❤️" color="violet" />
+      {skillData.length > 0 &&
+        skillData.map((skillObj) => (
+          <Skill
+            skill={skillObj.skill}
+            emoji={skillObj.emoji}
+            color={skillObj.color}
+          />
+        ))}
     </div>
   );
 }
@@ -66,6 +106,7 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
+    <App />
     <App />
   </StrictMode>
 );
