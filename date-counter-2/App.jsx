@@ -50,6 +50,9 @@ function Counter() {
         {today.toDateString()}
       </p>
       <br />
+
+      {
+        (count!==0 || steps!==1)&&
       <button
         onClick={() => {
           setCount(0);
@@ -57,7 +60,7 @@ function Counter() {
         }}
       >
         Reset All
-      </button>
+      </button>}
     </div>
   );
 }
