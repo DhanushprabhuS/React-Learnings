@@ -52,7 +52,8 @@ function FlashCards() {
         <div
           className={question.id === selectedId ? "selected" : ""}
           onClick={() => {
-            setSelectedId(question.id);
+            if (question.id !== selectedId) setSelectedId(question.id);
+            else setSelectedId(null);
           }}
         >
           <p>
