@@ -28,29 +28,46 @@ export default function App() {
 }
 
 function Accordion({ data }) {
+  const [currOpen,setCurrOpen] = useState(null);
+  function handleOpen (num){
+    setCurrOpen(currOpen===num?null:num);
+  }
+
   return (
     <div className="accordion">
       {data.map((el, i) => (
-        <AccordionItem num={i} title={el.title} text={el.text} key={el.title}/>
+        <AccordionItem num={i} title={el.title} currOpen={currOpen} onClickDiv={handleOpen} key={el.title}>{el.text}</AccordionItem>
       ))}
+      <AccordionItem num={22} title={'Learn React'} currOpen={currOpen} onClickDiv={handleOpen} key={21}>
+        <p>Tips to learn</p>
+        <ul>
+          <li>Learn basics</li>
+          <li>Practice</li>
+          <li>Think in React</li>
+        </ul>
+      </AccordionItem>
+
+      <AccordionItem num={24} title={'Learn React 2'} currOpen={currOpen} onClickDiv={handleOpen} key={21}>
+        <p>Only Tip to learn</p>
+        <marquee className='title'>Hard work</marquee>
+      </AccordionItem>
     </div>
   );
 }
 
-function AccordionItem({ num, title, text }) {
-  const [isSelected, setIsSelected] = useState(false);
+function AccordionItem({ num, title,currOpen, onClickDiv, children }) {
 
   return (
     <div
-      className={`item ${isSelected ? "open" : ""}`}
+      className={`item ${currOpen===num ? "open" : ""}`}
       onClick={() => {
-        setIsSelected((preVal) => !preVal);
+        onClickDiv(num);
       }}
     >
       <p className="number">{num < 9 ? `0${num + 1}` : num + 1}</p>
       <p className="title">{title}</p>
-      <p className="icon">{isSelected?"-":"+"}</p>
-      {isSelected ? <p className="content-box">{text}</p> : null}
+      <p className="icon">{currOpen===num?"-":"+"}</p>
+      {currOpen===num ? <p className="content-box">{children}</p> : null}
     </div>
   );
 }
